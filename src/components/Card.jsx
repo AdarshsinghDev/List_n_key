@@ -26,17 +26,33 @@ const Card = () => {
     },
   ]);
 
-  const handleCheck = (id) =>  {
-    console.log(`id: ${id}`);
-
+  const handleCheck = (id) => {
+    const listItem = items.map((item) =>
+      item.id === id
+        ? {
+            ...item,
+            checked: !item.checked,
+          }
+        : item
+    );
+    setItems(listItem);
   };
+
+  // const handleLine = (id) =>{
+
+  // }
 
   return (
     <div className="w-1/2 m-auto">
-      <h1 className="text-2xl text-center font-bold underline mb-10 py-5 text-orange-600 font-mono">List & Key</h1>
+      <h1 className="text-2xl text-center font-bold underline mb-10 py-5 text-orange-600 font-mono">
+        List & Key
+      </h1>
       <ul className="flex my-5 gap-5">
         {items.map((item) => (
-          <li key={item.id} className="border p-3 text-center flex flex-col items-center gap-3 bg-white hover:shadow-lg w-[300px]">
+          <li
+            key={item.id}
+            className="border p-3 text-center flex flex-col items-center gap-3 bg-white hover:shadow-lg w-[300px]"
+          >
             <h1 className="text-amber-900 font-semibold text-2xl underline">
               {item.name}
             </h1>
